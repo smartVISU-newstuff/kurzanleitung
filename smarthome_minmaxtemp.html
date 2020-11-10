@@ -14,7 +14,13 @@
 {% endblock %}
 
 {% block docu %}
-
+<script type="text/javascript">
+	$( document ).ready(function() {
+		var now = +new Date();	
+		io.write('EG.Aussen.temperature.min', 18 );
+		io.write('EG.Aussen.temperature.max', 23 );
+	});
+</script>
 	Hier nun ein Besipiel wie man anhand von Werten aus der Datenbank einen Minimal- und Maximalwert ermitteln kann. Als Zeitraum für die Ermittlung geben wir die letzten 24 Stunden vor.<br>
 	Hierbei kommt eval wiederum zum Einsatz.<br><br>
 	
@@ -22,7 +28,7 @@
     <div class="set-2" data-role="collapsible-set" data-theme="c" data-content-theme="a" data-mini="true">
 		<div data-role="collapsible" data-collapsed="false">	
 			<h3>Aussentemperaturverlauf</h3> <p>Min:{{ basic.print('', 'EG.Aussen.temperature.min', '°C') }} -- Max:{{ basic.print('', 'EG.Aussen.temperature.max', '°C') }}</p>
-			{{ plot.period('', 'EG.Aussen.temperature', 'avg', '24h', 0, '', '', '', ['Temp. in °C'] ,'', '', '' ,'1h') }}
+			{{ plot.period('', 'EG.Aussen.temperature', 'avg', '24h', 0, '15', '25', '', ['Temp. in °C'] ,'', '', '' ,'1h') }}
         </div>
 	</div>
 	</div> 

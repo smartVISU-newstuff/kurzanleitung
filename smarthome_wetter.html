@@ -14,6 +14,23 @@
 {% endblock %}
 
 {% block docu %}
+<script type="text/javascript">
+	$( document ).ready(function() {
+		var now = +new Date();	
+		io.write('Wetter.Windrichtung', 45 );
+		io.write('Wetter.WindrichtungNWOS', 'NO' );
+		io.write('Wetter.Windgeschwindigkeit.Web', 23 );
+		io.write('Wetter.Temperatur.Web', 20 );
+		io.write('Wetter.Luftdruck', 1023 );
+		io.write('Wetter.relative_luftfeuchte_perc', 53 );
+		io.write('Wetter.Taupunkt', 10 );
+		io.write('Wetter.Windchill', 19 );
+		io.write('Wetter.Solarstrahlung', 12 );
+		io.write('Wetter.Niederschlag_Heute', 1 );
+		io.write('Wetter.Niederschlag_letzte_stunde', 0 );
+		io.write('Wetter.Station', 'IMECKLEN47' );
+	});
+</script>
 	<div class="block">
     <div class="set-2" data-role="collapsible-set" data-theme="c" data-content-theme="a" data-mini="true">
     	<div data-role="collapsible" data-collapsed="false">
@@ -24,7 +41,7 @@
                     <td align=center">
 						{% import "icon.html" as icon %}
 						{{ icon.windrose('', '', 'Wetter.Windrichtung', '0', '360') }} <br> --------------------------- <br>
-						Wind aus: <span style="color:#FE9A2E">{{ basic.value('', 'Wetter.WindrichtungNWOS') }}</span> mit: <span style="color:#FE9A2E">{{ basic.print('', 'Wetter.Windgeschwindigkeit.Web', 'km/h') }}</span><br> --------------------------- <br>
+						Wind aus: <span style="color:#FE9A2E">{{ basic.print('', 'Wetter.WindrichtungNWOS') }}</span> mit: <span style="color:#FE9A2E">{{ basic.print('', 'Wetter.Windgeschwindigkeit.Web', 'km/h') }}</span><br> --------------------------- <br>
                     </td>
                 </tr>
             </table>

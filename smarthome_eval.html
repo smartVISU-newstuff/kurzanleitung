@@ -14,6 +14,15 @@
 {% endblock %}
 
 {% block docu %}
+<script type="text/javascript">
+	$( document ).ready(function() {
+		var now = +new Date();	
+		io.write('Slider.BM.WT1', 500 );
+		io.write('Slider.BM.WT2', 800 );
+		io.write('BM1.status', 1 );
+		io.write('BM11.status', 0 );
+	});
+</script>
 	Das eval - Attribut ist für kleine Auswertungen oder Korrekturen gedacht bzw. nützlich. Genauere Infos zu eval findet man <a href="https://www.smarthomeng.de/user/konfiguration/items/standard_attribute/eval.html" target="_blank">hier</a>.<br> 
 	Im Folgenden wird ein mögliches eval-Beispiel aufgeführt.<br><br>
 	Ziel / Vorgabe:<br>
@@ -31,7 +40,7 @@
 					</td>
 			</tr>
 			<tr align="center">
-				<td style="vertical-align:top">{{ basic.float('float1', 'Slider.BM.WT1', 'lux') }}<br />
+				<td style="vertical-align:top">{{ basic.print('float1', 'Slider.BM.WT1', 'lux') }}<br />
 					</td>
 			</tr>			
 			<tr>
@@ -43,7 +52,7 @@
 					</td>
 			</tr>
 			<tr align="center">
-				<td style="vertical-align:top">{{ basic.symbol('BM1', 'BM1.status', '', icon1~'message_presence.svg', 1) }}<br />
+				<td style="vertical-align:top">{{ basic.symbol('BM1', 'BM1.status', '', 'message_presence', 1) }}<br />
 					</td>
 			</tr>
 		</tbody>
@@ -64,7 +73,7 @@
 					</td>
 			</tr>
 			<tr align="center">
-				<td style="vertical-align:top">{{ basic.float('float2', 'Slider.BM.WT2', 'lux') }}<br />
+				<td style="vertical-align:top">{{ basic.print('float2', 'Slider.BM.WT2', 'lux') }}<br />
 					</td>
 			</tr>			
 			<tr>
@@ -76,7 +85,7 @@
 					</td>
 			</tr>
 			<tr align="center">
-				<td style="vertical-align:top">{{ basic.symbol('BM2', 'BM11.status', '', icon1~'message_presence.svg', 1) }} {{ basic.symbol('BM21', 'BM11.status', '', icon0~'message_presence_disabled.svg', 0) }}<br />
+				<td style="vertical-align:top">{{ basic.symbol('BM2', 'BM11.status', '', 'message_presence', 1) }} {{ basic.symbol('BM21', 'BM11.status', '', 'message_presence_disabled', 0) }}<br />
 					</td>
 			</tr>
 		</tbody>
