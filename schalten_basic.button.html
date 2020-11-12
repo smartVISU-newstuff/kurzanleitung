@@ -10,7 +10,7 @@
 {% extends "schalten.html" %}
 
 {% block headline %}
-	<img class="icon" src='{{ icon0 }}light_light.svg' />Schalten & Status - basic.button
+	<img class="icon" src='{{ icon0 }}light_light.svg' />Schalten & Status - Taster
 {% endblock %}
 
 {% block docu %}
@@ -77,11 +77,11 @@ Der dazugehörige html-Code in Block-Typ 2 sieht so aus:<br>
 	<div class="preblock">
 		<span data-role="controlgroup" data-type="horizontal"> 
 			Szenen<br />
-			{{ basic.button('szene1', 'Wohnzimmer.Szenen', '', icon0~'scene_party.svg', 0, 'midi') }}
-			{{ basic.button('szene2', 'Wohnzimmer.Szenen', '', icon0~'scene_dinner.svg', 1, 'midi') }}
-			{{ basic.button('szene3', 'Wohnzimmer.Szenen', '', icon0~'scene_livingroom.svg', 2, 'midi') }}
-			{{ basic.button('szene4', 'Wohnzimmer.Szenen', '', icon0~'scene_cubby.svg', 3, 'midi') }}
-			{{ basic.button('szene5', 'Wohnzimmer.Szenen', '', icon0~'status_away_1.svg', 4, 'midi') }}
+			{{ basic.stateswitch('szene1', 'Wohnzimmer.Szenen', 'midi', 0, 'scene_party.svg') }}
+			{{ basic.stateswitch('szene2', 'Wohnzimmer.Szenen', 'midi', 1, 'scene_dinner.svg') }}
+			{{ basic.stateswitch('szene3', 'Wohnzimmer.Szenen', 'midi', 2, 'scene_livingroom.svg') }}
+			{{ basic.stateswitch('szene4', 'Wohnzimmer.Szenen', 'midi', 3, 'scene_cubby.svg') }}
+			{{ basic.stateswitch('szene5', 'Wohnzimmer.Szenen', 'midi', 4, 'status_away_1.svg') }}
 		</span>
 	</div>
 {% endraw %}

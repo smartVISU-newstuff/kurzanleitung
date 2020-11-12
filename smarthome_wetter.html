@@ -34,7 +34,7 @@
 	<div class="block">
     <div class="set-2" data-role="collapsible-set" data-theme="c" data-content-theme="a" data-mini="true">
     	<div data-role="collapsible" data-collapsed="false">
-            <h3>{{ basic.value('', 'Wetter.LastUpdate') }}</h3>
+            <h3>{{ basic.print('', 'Wetter.LastUpdate') }}</h3>
 			
             <table width=100%>
                 <tr>
@@ -131,7 +131,7 @@
                         Station:
                     </td>
                     <td align=right>
-                        {{ basic.print('web13', 'Wetter.Station') }}
+                        {{ basic.print('web14', 'Wetter.Station') }}
                     </td>
                 </tr>
             </table>
@@ -413,7 +413,7 @@ Wetter:
                         Station:
                     </td>
                     <td align=right>
-                        {{ basic.prints('web13', 'Wetter.Station') }}
+                        {{ basic.print('web13', 'Wetter.Station') }}
                     </td>
                 </tr>
             </table>

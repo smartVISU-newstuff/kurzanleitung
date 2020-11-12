@@ -1,11 +1,20 @@
 /**
+* -----------------------------------------------------------------------------
+* @package     smartVISU
+* @author      Martin Gleiß
+* @copyright   2012 - 2015
+* @license     GPL [http://www.gnu.de]
+* -----------------------------------------------------------------------------
+*/
+
+/**
 * Mein Rollo-Widget
 *
-* @param       eindeutige ID für dieses Widget
-* @param       der Name des Rollos
-* @param       das gad/item für den Fahr-Befehl
-* @param       das gad/item für den Stop-Befehl
-* @param       das gad/item für den Positionsstatus
+* @param {id=} eindeutige ID für dieses Widget
+* @param {text=} der Name des Rollos
+* @param {item(bool,num)} das gad/item für den Fahr-Befehl
+* @param {item(bool,num)} das gad/item für den Stop-Befehl
+* @param {item(bool,num)} das gad/item für die Position
 *
 */
 {% macro rollobedienung(id, txt, gad_move, gad_stop, gad_position) %}

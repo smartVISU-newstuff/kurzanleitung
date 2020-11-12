@@ -17,8 +17,8 @@
 	<div class="preblock">
 		<span data-role="controlgroup" data-type="horizontal"> 
 			Code = 9876<br />
-				{% import "widget_authbutton.html" as lola %}
-				{{ lola.auth_switch('auth1', 'Wohnzimmer.Stehlampe', icon1~'sani_domestic_waterworks.svg', icon0~'sani_domestic_waterworks.svg', '1', '0', '9876' ) }}
+				{% import "widget_authbutton.html" as widget_authbutton %}
+				{{ widget_authbutton.auth_switch('auth1', 'Wohnzimmer.Stehlampe', icon1~'sani_domestic_waterworks.svg', icon0~'sani_domestic_waterworks.svg', '1', '0', '9876' ) }}
 		</span>
 	</div>
 <br />	
@@ -192,8 +192,8 @@ Hier fügen wir nun den folgenden Code ein.<br>
 	Die Einbindung könnte wie folgt aussehen:<br>
 		<div class="linux">
 		<code class="prettyprint">{% filter trim|escape|nl2br %}{% verbatim %}
-				{% import "widget_codepad.html" as codepad %}
-				{{ cpdepad.auth_switch('auth1', 'Keller.Pumpe', icon1~'sani_domestic_waterworks.svg', icon0~'sani_domestic_waterworks.svg', '1', '0', '9876' ) }}
+				{% import "widget_codepad.html" as widget_codepad %}
+				{{ widget_codepad.auth_switch('auth1', 'Keller.Pumpe', icon1~'sani_domestic_waterworks.svg', icon0~'sani_domestic_waterworks.svg', '1', '0', '9876' ) }}
 			{% endverbatim %}{% endfilter %}
 		</code>
 	</div>
@@ -217,8 +217,8 @@ Laut Doku im oben genannten Widget-Code, setzt sich dieses wie folgt zusammen:<b
 		<div class="set-2" data-role="collapsible-set" data-theme="c" data-content-theme="a" data-mini="true">
 			<div data-role="collapsible" data-collapsed="false">
 				<h3>Codepad</h3>
-					{% import "widget_codepad.html" as codepad %}
-					{{ cpdepad.auth_switch('auth1', 'Keller.Pumpe', icon1~'sani_domestic_waterworks.svg', icon0~'sani_domestic_waterworks.svg', '1', '0', '9876' ) }}
+					{% import "widget_codepad.html" as widget_codepad %}
+					{{ widget_codepad.auth_switch('auth1', 'Keller.Pumpe', icon1~'sani_domestic_waterworks.svg', icon0~'sani_domestic_waterworks.svg', '1', '0', '9876' ) }}
 			</div>
 		</div>
 	</div>

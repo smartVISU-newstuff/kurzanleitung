@@ -1,13 +1,22 @@
 /**
+* -----------------------------------------------------------------------------
+* @package     smartVISU
+* @author      Martin Gleiß
+* @copyright   2012 - 2015
+* @license     GPL [http://www.gnu.de]
+* -----------------------------------------------------------------------------
+*/
+
+/**
 * A switch, build of two pics, but with necessary authentication
 *
-* @param unique id for this widget
-* @param a gad/item
-* @param the pic for the 'on' state (optional)
-* @param the pic for the 'off' state (optional)
-* @param value send for the 'on' state (optional, default 1)
-* @param value send for the 'off' state (optional, default 0)
-* @param value for the passwort, for example 1234
+* @param {id=} unique id for this widget
+* @param {item} a gad/item
+* @param {image=} the pic for the 'on' state (optional)
+* @param {image=} the pic for the 'off' state (optional)
+* @param {value=1} value send for the 'on' state (optional, default 1)
+* @param {value=0} value send for the 'off' state (optional, default 0)
+* @param {value} value for the passwort, for example 1234
 */
 {% macro auth_switch(id, gad, pic_on, pic_off, val_on, val_off, refpwd ) %}
 {% set uid = uid(page, id) %}	
