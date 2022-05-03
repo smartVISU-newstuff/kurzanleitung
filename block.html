@@ -18,55 +18,35 @@
 
 {% block submenu %}
 	<style>
-		.nav-custom .ui-btn .ui-btn-inner {
-			padding-top: 40px !important;
+		#typ1:after {
+			background: url({{ icon0 }}time_note.svg);
 		}
 
-		.nav-custom .ui-btn .ui-icon {
-			width: 30px !important;
-			height: 30px !important;
-			margin-left: -15px !important;
-			box-shadow: none !important;
-			-moz-box-shadow: none !important;
-			-webkit-box-shadow: none !important;
-			-webkit-border-radius: 0 !important;
-			border-radius: 0 !important;
+		#typ2:after {
+			background: url({{ icon0 }}time_note.svg);
 		}
 
-		#typ1 .ui-icon {
-			background: url({{ icon0 }}time_note.svg) 50% 50% no-repeat;
-			background-size: 36px 36px;
+		#typ3:after {
+			background: url({{ icon0 }}time_note.svg);
 		}
 
-		#typ2 .ui-icon {
-			background: url({{ icon0 }}time_note.svg) 50% 50% no-repeat;
-			background-size: 36px 36px;
+		#typ4:after {
+			background: url({{ icon0 }}time_note.svg);
 		}
 
-		#typ3 .ui-icon {
-			background: url({{ icon0 }}time_note.svg) 50% 50% no-repeat;
-			background-size: 36px 36px;
-		}
-
-		#typ4 .ui-icon {
-			background: url({{ icon0 }}time_note.svg) 50% 50% no-repeat;
-			background-size: 36px 36px;
-		}
-
-		#typ5 .ui-icon {
-			background: url({{ icon0 }}time_note.svg) 50% 50% no-repeat;
-			background-size: 36px 36px;
+		#typ5:after {
+			background: url({{ icon0 }}time_note.svg);
 		}		
 
 	</style>
 
 	<div data-role="navbar" class="nav-custom">
 		<ul>
-			<li><a href="index.php?page=block_typ1" id="typ1" data-icon="custom">Block Typ 1</a></li>
-			<li><a href="index.php?page=block_typ2" id="typ2" data-icon="custom">Block Typ 2</a></li>
-			<li><a href="index.php?page=block_typ3" id="typ3" data-icon="custom">Block Typ 3</a></li>
-			<li><a href="index.php?page=block_typ4" id="typ4" data-icon="custom">Block Typ 4</a></li>
-			<li><a href="index.php?page=block_typ5" id="typ5" data-icon="custom">Block Typ 5</a></li>			
+			<li><a href="index.php?page=block_typ1" id="typ1" class="ui-btn-icon-top">Block Typ 1</a></li>
+			<li><a href="index.php?page=block_typ2" id="typ2" class="ui-btn-icon-top">Block Typ 2</a></li>
+			<li><a href="index.php?page=block_typ3" id="typ3" class="ui-btn-icon-top">Block Typ 3</a></li>
+			<li><a href="index.php?page=block_typ4" id="typ4" class="ui-btn-icon-top">Block Typ 4</a></li>
+			<li><a href="index.php?page=block_typ5" id="typ5" class="ui-btn-icon-top">Block Typ 5</a></li>			
 		</ul>
 	</div>
 <br>

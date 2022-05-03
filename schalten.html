@@ -18,47 +18,28 @@
 
 {% block submenu %}
 	<style>
-		.nav-custom .ui-btn .ui-btn-inner {
-			padding-top: 40px !important;
+		#basicswitch:after {
+			background: url({{ icon0 }}control_on_off.svg);
 		}
 
-		.nav-custom .ui-btn .ui-icon {
-			width: 30px !important;
-			height: 30px !important;
-			margin-left: -15px !important;
-			box-shadow: none !important;
-			-moz-box-shadow: none !important;
-			-webkit-box-shadow: none !important;
-			-webkit-border-radius: 0 !important;
-			border-radius: 0 !important;
+		#basicbutton:after {
+			background: url({{ icon0 }}scene_party.svg);
 		}
 
-		#basicswitch .ui-icon {
-			background: url({{ icon0 }}time_note.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
+		#basicdual:after {
+			background: url({{ icon0 }}control_switch_1.svg);
 		}
 
-		#basicbutton .ui-icon {
-			background: url({{ icon0 }}time_note.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
-		}
-
-		#basicdual .ui-icon {
-			background: url({{ icon0 }}time_note.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
-		}
-
-		#basicsymbol .ui-icon {
-			background: url({{ icon0 }}time_note.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
+		#basicsymbol:after {
+			background: url({{ icon0 }}fts_window_1w_open.svg);
 		}
 	</style>
 	<div data-role="navbar" class="nav-custom">
 		<ul>
-			<li><a href="index.php?page=schalten_basic.switch" id="basicswitch" data-icon="custom">Schalter</a></li>
-			<li><a href="index.php?page=schalten_basic.button" id="basicbutton" data-icon="custom">Taster / Szenen</a></li>
-			<li><a href="index.php?page=schalten_basic.dual" id="basicdual" data-icon="custom">Umschalter</a></li>
-			<li><a href="index.php?page=schalten_basic.symbol" id="basicsymbol" data-icon="custom">Anzeige</a></li>
+			<li><a href="index.php?page=schalten_basic.switch" id="basicswitch" class="ui-btn-icon-top">Schalter</a></li>
+			<li><a href="index.php?page=schalten_basic.button" id="basicbutton" class="ui-btn-icon-top">Taster / Szenen</a></li>
+			<li><a href="index.php?page=schalten_basic.dual" id="basicdual" class="ui-btn-icon-top">Umschalter</a></li>
+			<li><a href="index.php?page=schalten_basic.symbol" id="basicsymbol" class="ui-btn-icon-top">Anzeige</a></li>
 		</ul>
 	</div>
 <br>

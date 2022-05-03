@@ -18,37 +18,20 @@
 
 {% block submenu %}
 	<style>
-		.nav-custom .ui-btn .ui-btn-inner {
-			padding-top: 40px !important;
+		#basicslider:after {
+			background: url({{ icon0 }}light_control.svg);
 		}
 
-		.nav-custom .ui-btn .ui-icon {
-			width: 30px !important;
-			height: 30px !important;
-			margin-left: -15px !important;
-			box-shadow: none !important;
-			-moz-box-shadow: none !important;
-			-webkit-box-shadow: none !important;
-			-webkit-border-radius: 0 !important;
-			border-radius: 0 !important;
-		}
-
-		#basicslider .ui-icon {
-			background: url({{ icon0 }}time_note.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
-		}
-
-		#devicedimmer .ui-icon {
-			background: url({{ icon0 }}time_note.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
+		#devicedimmer:after {
+			background: url({{ icon0 }}light_control.svg);
 		}
 
 	</style>
 
 	<div data-role="navbar" class="nav-custom">
 		<ul>
-			<li><a href="index.php?page=dimmen_basic.slider" id="basicslider" data-icon="custom">Schieberegler</a></li>
-			<li><a href="index.php?page=dimmen_device.dimmer" id="devicedimmer" data-icon="custom">Dimmer</a></li>
+			<li><a href="index.php?page=dimmen_basic.slider" id="basicslider" class="ui-btn-icon-top">Schieberegler</a></li>
+			<li><a href="index.php?page=dimmen_device.dimmer" id="devicedimmer" class="ui-btn-icon-top">Dimmer</a></li>
 		</ul>
 	</div>
 <br>

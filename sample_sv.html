@@ -15,39 +15,20 @@
 
 {% block submenu %}
 	<style>
-		.nav-custom .ui-btn .ui-btn-inner {
-			padding-top: 40px !important;
-		}
-
-		.nav-custom .ui-btn .ui-icon {
-			width: 30px !important;
-			height: 30px !important;
-			margin-left: -15px !important;
-			box-shadow: none !important;
-			-moz-box-shadow: none !important;
-			-webkit-box-shadow: none !important;
-			-webkit-border-radius: 0 !important;
-			border-radius: 0 !important;
+		#selfwidgets:after {
+			background: url({{ icon0 }}edit_copy.svg);
 		}
 		
-		#selfwidgets .ui-icon {
-			background: url({{ icon0 }}edit_copy.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
-		}
-		
-		#cam .ui-icon {
-			background: url({{ icon0 }}it_camera.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
+		#cam:after {
+			background: url({{ icon0 }}it_camera.svg);
 		}
 
-		#codepad .ui-icon {
-			background: url({{ icon0 }}edit_input_numeric.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
+		#codepad:after {
+			background: url({{ icon0 }}edit_input_numeric.svg);
 		}
 
 		#statusnotify .ui-icon {
-			background: url({{ icon0 }}secur_alarm.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
+			background: url({{ icon0 }}secur_alarm.svg);
 		}
 
 
@@ -55,7 +36,7 @@
 
 	<div data-role="navbar" class="nav-custom">
 		<ul>
-			<li><a href="index.php?page=sample_sv_self_widgets" id="selfwidgets" data-icon="custom">eigene oder angepasste Widgets erstellen</a></li>		
+			<li><a href="index.php?page=sample_sv_self_widgets" id="selfwidgets" class="ui-btn-icon-top">eigene oder angepasste Widgets erstellen</a></li>		
 		</ul>
 	</div>	
 	

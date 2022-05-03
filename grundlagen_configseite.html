@@ -31,13 +31,16 @@
 <ul>	
 	<li><i>Seiten</i> = Auswahlmöglichkeit für die individuelle Visu im 'pages'-Verzeichnis</li>
 	<li><i>Design</i> = Auswahlmöglichkeit für die verschiedenen Design-Stile der Visu</li>
+	<li><i>Titel</i> = Eingabefeld für einen individuellen Namen, der dann u.a. in der Browserleiste angezeigt wird</li>
+	<li><i>Sprache</i> = Auswahlmöglichkeit für die Sprache</li>
 	<li><i>Cache</i> = Einschalten des Seitenspeichers, um kürzere Ladezeiten zu erreichen. (empfohlen = on)<br>
 	Die Option wird nur dann angezeigt, wenn das Cache-Verzeichnis schreibbar ist. 
 	Während der Entwicklung neuer Seiten sollte der Cache ausgeschaltet sein, da sonst die Änderungen nicht angezeigt werden.</li>
 	<li><i>Leeren</i> = der Cache wird gelöscht. Bestätigung über eine grüne Meldung in er oberen rechten Ecke.
 </ul>	
+<script src="lib/base/config.js"></script>
 {% set source = 'global' %}
-{% set values = read_config(source) %}
+{% set values = {(source): read_config(source)} %}
 {% set id = (source != "global") ? '_' ~ source : '' %}
 <div id="config_tab_{{ source }}">
 	<form class="configform">
@@ -49,21 +52,28 @@
 					</div>
 					<div data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="a">
 						<h3>{{ lang('configuration_page', 'interface', 'label') }}</h3>
-						{{ forms.config_select(source, values, 'pages', dir('pages', '^(?!base|apps)(.+?)') ) }}
-						{{ forms.config_select(source, values, 'design', dir('designs', '(.+?).css')) }}
-						{{ forms.config_flip(source, values, 'cache', '<button type="button" data-theme="a" data-icon="delete" data-inline="true" id="clear_cache' ~ id ~ '" class="ui-micro"' ~ (not values['cache'] is defined ? ' disabled="disabled"'|raw) ~ '>' ~ lang('configuration_page', 'cache', 'clearbutton') ~'</button>') }}
-					</div>
-					<div data-role="collapsible" data-collapsed="true" data-theme="c" data-content-theme="a" >
-						<h3>{{ lang('configuration_page', 'content', 'label') }}</h3>
-						{{ forms.config_input(source, values, 'title') }}
-						{{ forms.config_select(source, values, 'lang', dir('lang', '^(.*?)\.ini$') ) }}
-						{{ forms.config_select(source, values, 'timezone', timezones()) }}
+						<div style="min-height:245px">
+							{{ forms.config_select(source, values, 'pages', dir('pages', '^(?!base|apps)(.+?)') ) }}
+							{{ forms.config_row(source, values, 'design',
+								[
+								forms.config_select(source, values, 'design', dir('designs', '(.+?).css'), 'true')
+								,forms.config_hidden(source, values, 'design_icon0')
+								,forms.config_hidden(source, values, 'design_icon1')
+								] 
+							) }}
+							{{ forms.config_input(source, values, 'title') }}
+							{% set langdir = dir('lang', '^(.*?)\.ini$') %} {% if isdir('dropins/lang') %} {% set langdir = langdir|merge(dir('dropins/lang', '^(.*?)\.ini$')) %} {% endif %}
+							{{ forms.config_select(source, values, 'lang', langdir ) }}
+							{{ forms.config_flip(source, values, 'cache', '<button type="button" data-theme="a" data-icon="delete" data-inline="true" id="clear_cache' ~ id ~ '" class="ui-micro"' ~ (not values[source]['cache'] is defined ? ' disabled="disabled"'|raw) ~ '>' ~ lang('configuration_page', 'cache', 'clearbutton') ~'</button>') }}
+							{{ forms.check_cache ( source, values, 'cache') }}
+						</div>
 					</div>
 					<div data-role="collapsible" data-collapsed="true" data-theme="c" data-content-theme="a">
 						<h3>{{ lang('configuration_page', 'behaviour', 'label') }}</h3>
 						{{ forms.config_flip(source, values, 'animation') }}
 						{{ forms.config_input(source, values, 'backtohometime', 'wide') }}
 						{{ forms.config_select(source, values, 'timesource', [{"name": "client", "label": "Client"}, {"name": "server", "label": "Server"}] ) }}
+						{{ forms.config_select(source, values, 'timezone', timezones()) }}
 					</div>
 				</div>
 			</div>
@@ -71,13 +81,12 @@
 	</form>
 </div>
 <br clear="all">	
-	Unter "Inhalt" kann man als "Titel" einen individuellen Namen vergeben, der dann u.a. in der Browserleiste angezeigt wird.
-	Weiterhin werden dort die Sprache und die Zeitzone eingestellt.<br>
 	Unter "Verhalten" gibt es folgende Einstellmöglichkeiten:
 <ul>
 	<li><i>Animation</i> = Auswahlmöglichkeit um einige Elemente wie z.B. das Einblenden der Telefonliste animiert darzustellen (empfohlen = on)</li>
 	<li><i>auto. Rückkehr</i> = Hier kann die Zeit eingestellt werden, nach der die Anzeige zur Startseite zurückkehrt.</li>
 	<li><i>Zeitquelle</i> = Auswahlmöglichkeit, ob die Uhrzeit vom Server oder vom Anzeigegerät (client) verwendet wird.</li>
+	<li><i>Zeitzone</i> = Auswahlmöglichkeit für die lokale Zeitzone.</li>
 </ul>
 	<hr />
 	<h2>SmartHome / IoT-Datenquelle</h2>
@@ -87,10 +96,13 @@
 	<li><i>System</i> = SmartHome System am Backend	(empfohlen = SmartHomeNG)</li>
 	<li><i>Host/IP </i> =  Verbindung zum Backend (empfohlen = IP des Raspberry Pi)  </li>
 	<li><i>Port</i> = Port zur Verbindung mit Backend (empfohlen = Standard Port von SmartHomeNG = 2424)</li>
+	<li><i>TLS-Port</i> = Port zur verschlüsselten Verbindung mit Backend (empfohlen = Standard TLS-Port von SmartHomeNG = 2425)</li>
 	<li><i>Realtime</i> = Echtzeit (empfohlen = on)</li>
 	<li><i>Reconnect</i> = Verbindungen zum Backend automatisch wiederherstellen, z.B. wenn Browser Tab im Hintergrund war (empfohlen = on)</li>
 	<li><i>Reverse Proxy</i> = Löscht IP-Adresse und Port, wenn der Server als Reverse Proxy betrieben wird.</li>
 </ul>
+Der in v3.2 eingeführte neue Treiber für smarthomeNG ("smarthomenNG new") verbessert die Erkennung der bestehenden Verbindung und benötigt deshalb die Option "Reverse Proxy" nicht mehr. Wird die Visu allerdings nicht über die IP-Adresse aufgerufen, 
+sondern über einen Hostnamen, dann muss dieser Hostname zwingend im Abschnitt "smartVISU Hostname / Proxy Server" eingegeben werden!
 <div id="config_tab_{{ source }}_2">
 	<form class="configform">
 		<fieldset>
@@ -101,27 +113,49 @@
 					</div>
 					<div data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="a">
 						<h3>{{ lang('configuration_page', 'ioconnection', 'label') }}</h3>
-						{{ forms.config_select(source, values, 'driver', dir('driver', '^io_(.+?).js') ) }}
-						{{ forms.config_input(source, values, 'driver_address', 'wide') }}
-						{{ forms.config_input(source, values, 'driver_port', 'wide') }}
-						{{ forms.config_flip(source, values, 'driver_realtime') }}
-						{{ forms.config_flip(source, values, 'driver_autoreconnect') }}
-						{{ forms.config_flip(source, values, 'reverseproxy') }}
+						<div style="min-height:245px">
+							{{ forms.config_select(source, values, 'driver', dir('driver', '^io_(.+?).js') ) }}
+							{{ forms.config_input(source, values, 'driver_address', 'wide') }}
+							{{ forms.config_input(source, values, 'driver_port', 'wide') }}
+							{{ forms.config_input(source, values, 'driver_tlsport', 'wide') }}
+							{{ forms.config_flip(source, values, 'driver_realtime') }}
+							{{ forms.config_flip(source, values, 'driver_autoreconnect') }}
+							{{ forms.config_flip(source, values, 'reverseproxy', forms.config_reverseproxy (source, values, 'reverseproxy') ) }}
+						</div>
+					</div>
+					<div class="ui-field-contain" style="margin:0;" data-role="collapsible" data-collapsed="true" data-theme="c" data-content-theme="a" >
+						<h3>{{ lang('configuration_page', 'console', 'label') }}</h3><br />
+						<div style="min-height:224px;">
+							{{ forms.config_input(source, values, 'driver_consoleport', 'wide') }}
+							{{ forms.config_input(source, values, 'driver_consoleusername', 'wide') }}
+							{{ forms.config_input(source, values, 'driver_consolepassword', 'password') }}
+						</div>
+					</div>
+					<div class="ui-field-contain" style="margin:0;" data-role="collapsible" data-collapsed="true" data-theme="c" data-content-theme="a" >
+						<h3>{{ lang('configuration_page', 'auth-security', 'label') }}</h3><br />
+						<div style="min-height:224px;">
+							{{ forms.config_flip(source, values, 'driver_ssl') }}
+							{{ forms.config_input(source, values, 'driver_username', 'wide') }}
+							{{ forms.config_input(source, values, 'driver_password', 'password') }} 
+						</div>
 					</div>
 					<div data-role="collapsible" data-collapsed="true" data-theme="c" data-content-theme="a" >
-						<h3>{{ lang('configuration_page', 'proxyserver', 'label') }}</h3>
-						{{ forms.config_flip(source, values, 'proxy') }}
-						{{ forms.config_input(source, values, 'proxy_url', 'wide') }}
-						{{ forms.config_input(source, values, 'proxy_user') }}
-						{{ forms.config_input(source, values, 'proxy_password', 'password') }}
+						<h3>{{ lang('configuration_page', 'proxyserver', 'label') }}</h3><br />
+						<div style="min-height:225px">
+							{{ forms.config_input(source, values, 'sv_hostname') }}
+							{{ forms.config_flip(source, values, 'proxy') }}
+							{{ forms.config_input(source, values, 'proxy_url', 'wide') }}
+							{{ forms.config_input(source, values, 'proxy_user') }}
+							{{ forms.config_input(source, values, 'proxy_password', 'password') }}
+						</div>
 					</div>
 				</div>
-			</div>	
+			</div>
 		</fieldset>
 	</form>
 </div>
 <br clear="all">
-	Unter "Proxy-Server" werden die Adresse und die Zugangsdaten eines Proxy-Servers eingetragen. 	
+	Weitere Optionen, wie Authentifizierung oder Konsolen-Zugriff werden passend zum ausgewählten Backend angeboten. Unter "Proxy-Server" werden die Adresse und die Zugangsdaten eines Proxy-Servers eingetragen. 	
 	<hr />
 	<h2>Andere Datenquellen:</h2>
 	Hier kann man verschiedene Online-Wetterdienste auslesen. In der Regel wird ein "API-Key" benötigt, für den man sich beim Anbieter registrieren muss. Lediglich Yr.no benötigt keinen API-Key.<br>
@@ -182,7 +216,6 @@ Den benannten Kalendern können Farben zugewiesen werden. Diese sind ebenfalls d
 <h2>Optionen:</h2>
 Hier werden zusätzliche Optionen ausgwählt:
 <ul>
-	<li><i>Widget Constructor:</i> ein Assistent zum Parametrieren der Widgets für die Visu. Es wird empfohlen, ihn beim Erstellen neuer Seiten einzuschalten. Im produktiven Betrieb sollte er ausgeschaltet werden, um Ressourcen zu sparen.</li>
 	<li><i>Updateprüfung:</i> wenn dies aktiviert ist, sucht smartVISU regelmäßig nach Updates und meldet dies im Mitteilungsbereich oben rechts (empfohlen = on).
 </ul>
 <div id="config_tab_{{ source }}_3">
@@ -194,10 +227,6 @@ Hier werden zusätzliche Optionen ausgwählt:
 						<h3 class="ui-collapsible-heading">{{ lang('configuration_page', 'options', 'label') }}</h3>
 					</div>
 					<div data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="a" >
-						<h3>{{ lang('configuration_page', 'widgetconstructor', 'label') }}</h3>
-						{{ forms.config_flip(source, values, 'widgetconst') }}
-					</div>
-					<div data-role="collapsible" data-collapsed="true" data-theme="c" data-content-theme="a" >
 						<h3>{{ lang('configuration_page', 'updatecheck', 'label') }}</h3>
 						{{ forms.config_flip(source, values, 'updatecheck') }}
 					</div>

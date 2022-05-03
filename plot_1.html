@@ -18,47 +18,28 @@
 
 {% block submenu %}
 	<style>
-		.nav-custom .ui-btn .ui-btn-inner {
-			padding-top: 40px !important;
+		#plotperiod:after {
+			background: url({{ icon0 }}time_note.svg);
 		}
 
-		.nav-custom .ui-btn .ui-icon {
-			width: 30px !important;
-			height: 30px !important;
-			margin-left: -15px !important;
-			box-shadow: none !important;
-			-moz-box-shadow: none !important;
-			-webkit-box-shadow: none !important;
-			-webkit-border-radius: 0 !important;
-			border-radius: 0 !important;
+		#plotperiodzoom:after {
+			background: url({{ icon0 }}time_note.svg);
 		}
 
-		#plotperiod .ui-icon {
-			background: url({{ icon0 }}time_note.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
-		}
-
-		#plotperiodzoom .ui-icon {
-			background: url({{ icon0 }}time_note.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
-		}
-
-		#plotrtr .ui-icon {
-			background: url({{ icon0 }}time_note.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
+		#plotrtr:after {
+			background: url({{ icon0 }}time_note.svg);
 		}
 		
-		#plottemprose .ui-icon {
-			background: url({{ icon0 }}time_note.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
+		#plottemprose:after {
+			background: url({{ icon0 }}time_note.svg);
 		}
 	</style>
 	<div data-role="navbar" class="nav-custom">
 		<ul>
-			<li><a href="index.php?page=plot_plot.period" id="plotperiod" data-icon="custom">plot.period</a></li>
-			<li><a href="index.php?page=plot_plot.periodzoom" id="plotperiodzoom" data-icon="custom">plot.period (zoom)</a></li>
-			<li><a href="index.php?page=plot_plot.rtr" id="plotrtr" data-icon="custom">plot.rtr</a></li>
-			<li><a href="index.php?page=plot_plot.temprose" id="plottemprose" data-icon="custom">plot.temprose</a></li>			
+			<li><a href="index.php?page=plot_plot.period" id="plotperiod" class="ui-btn-icon-top">plot.period</a></li>
+			<li><a href="index.php?page=plot_plot.periodzoom" id="plotperiodzoom" class="ui-btn-icon-top">plot.period (zoom)</a></li>
+			<li><a href="index.php?page=plot_plot.rtr" id="plotrtr" class="ui-btn-icon-top">plot.rtr</a></li>
+			<li><a href="index.php?page=plot_plot.temprose" id="plottemprose" class="ui-btn-icon-top"">plot.temprose</a></li>			
 		</ul>
 	</div>
 {% endblock %}
