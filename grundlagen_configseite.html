@@ -38,10 +38,9 @@
 	Während der Entwicklung neuer Seiten sollte der Cache ausgeschaltet sein, da sonst die Änderungen nicht angezeigt werden.</li>
 	<li><i>Leeren</i> = der Cache wird gelöscht. Bestätigung über eine grüne Meldung in er oberen rechten Ecke.
 </ul>	
-<script src="lib/base/config.js"></script>
+<script src="pages/kurzanleitung/grundlagen_configseite.js"></script>
 {% set source = 'global' %}
 {% set values = {(source): read_config(source)} %}
-{% set id = (source != "global") ? '_' ~ source : '' %}
 <div id="config_tab_{{ source }}">
 	<form class="configform">
 		<fieldset>
