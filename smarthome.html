@@ -15,95 +15,51 @@
 
 {% block submenu %}
 	<style>
-		.nav-custom .ui-btn .ui-btn-inner {
-			padding-top: 40px !important;
+		#eval:after {
+			background: url({{ icon0 }}time_note.svg);
 		}
+		
+		#autotimer:after {
+			background: url({{ icon0 }}time_timer.svg);}
 
-		.nav-custom .ui-btn .ui-icon {
-			width: 30px !important;
-			height: 30px !important;
-			margin-left: -15px !important;
-			box-shadow: none !important;
-			-moz-box-shadow: none !important;
-			-webkit-box-shadow: none !important;
-			-webkit-border-radius: 0 !important;
-			border-radius: 0 !important;
-		}
+		#crontab:after {
+			background: url({{ icon0 }}time_clock.svg);}
 
-		#eval .ui-icon {
-			background: url({{ icon0 }}time_note.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
-		}
-		
-		#autotimer .ui-icon {
-			background: url({{ icon0 }}time_timer.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
-		}
+		#smarttv:after {
+			background: url({{ icon0 }}it_television.svg);}
 
-		#crontab .ui-icon {
-			background: url({{ icon0 }}time_clock.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
-		}
+		#squeezebox:after {
+			background: url({{ icon0 }}audio_audio.svg);}
+		
+		#minmax:after {
+			background: url({{ icon0 }}temp_control.svg);}
+		
+		#fritzbox:after {
+			background: url({{ icon0 }}it_router.svg);}
 
-		#smarttv .ui-icon {
-			background: url({{ icon0 }}it_television.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
-		}
+		#scene:after {
+			background: url({{ icon0 }}time_automatic.svg);}
 
-		#squeezebox .ui-icon {
-			background: url({{ icon0 }}audio_audio.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
-		}
+		#wol:after {
+			background: url({{ icon0 }}it_nas.svg);}
 		
-		#minmax .ui-icon {
-			background: url({{ icon0 }}temp_control.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
-		}
+		#mail:after {
+			background: url({{ icon0 }}message_mail.svg);}
 		
-		#fritzbox .ui-icon {
-			background: url({{ icon0 }}it_router.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
-		}
-
-		#scene .ui-icon {
-			background: url({{ icon0 }}time_automatic.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
-		}
-
-		#wol .ui-icon {
-			background: url({{ icon0 }}it_nas.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
-		}
+		#simulation:after {
+			background: url({{ icon0 }}message_presence_active.svg);}
 		
-		#mail .ui-icon {
-			background: url({{ icon0 }}message_mail.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
-		}
+		#uzsu:after {
+			background: url({{ icon0 }}time_clock.svg);}
 		
-		#simulation .ui-icon {
-			background: url({{ icon0 }}message_presence_active.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
-		}
+		#verbrauch:after {
+			background: url({{ icon0 }}measure_power_meter.svg);}
 		
-		#uzsu .ui-icon {
-			background: url({{ icon0 }}time_clock.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
-		}
+		#wetter:after {
+			background: url({{ icon0 }}weather_station.svg);}
 		
-		#verbrauch .ui-icon {
-			background: url({{ icon0 }}measure_power_meter.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
-		}
-		
-		#wetter .ui-icon {
-			background: url({{ icon0 }}weather_station.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
-		}
-		
-		#soon5 .ui-icon {
-			background: url({{ icon0 }}secur_locked.png) 50% 50% no-repeat;
-			background-size: 36px 36px;
-		}		
+		#soon5:after {
+			background: url({{ icon0 }}secur_locked.svg);}		
 		
 	</style>
 

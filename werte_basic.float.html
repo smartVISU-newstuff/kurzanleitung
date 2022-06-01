@@ -75,7 +75,7 @@
 <br>
 
 Das Beispiel-Item sieht so aus:<br>
-<textarea cols="50" rows="3">
+<textarea cols="50" rows="3" style="font-family:'Courier New'; font-size:12px">
 Verbrauch:
     Zaehler:
         PhaseL1:
@@ -116,7 +116,7 @@ Die Widgets, welche wir verwenden, sehen so aus:<br>
 
 <br><br>
 Der dazugehörige html-Code in Block-Typ 2 sieht so aus:<br>
-<textarea cols="50" rows="3">{% raw %}
+<textarea cols="50" rows="3" style="font-family:'Courier New'; font-size:12px">{% raw %}
     <div class="block">
     <div class="set-2" data-role="collapsible-set" data-theme="c" data-content-theme="a" data-mini="true">
     	<div data-role="collapsible" data-collapsed="false">
@@ -236,11 +236,11 @@ Für folgende Werte sind bereits festen Nachkommastellen und die damit angezeigt
 	</div>
 <br>
 <br>
-Wer seine eigene Maßeinheit inkl. Nachkommastelle festlegen will, kann dies entweder direkt in der Sprachdatei, z.B. ./lang/de.ini machen. 
+Wer seine eigene Maßeinheit inkl. Nachkommastelle festlegen will, kann dies direkt in der Sprachdatei, z.B. ./lang/de.ini machen. 
 Um bei späteren Updates ein Überschreiben der Änderungen zu vermeiden, kann man alternativ eine eigene Sprachdatei anlegen und diese in der 
-Konfiguration auswählen. Wichtig ist dann, dass die Datei auf die eigentliche Sprachdatei verweist.
-Ein möglicher Eintrag könnte so aussehen.
-<textarea cols="50" rows="3">{% raw %}
+Konfiguration auswählen. Wichtig ist dann, dass die Datei auf die eigentliche Sprachdatei verweist ("extends").
+Ein eigene Sprachdatei mit einer Formatangabe für 'kg' könnte so aussehen:
+<textarea cols="50" rows="3" style="font-family:'Courier New'; font-size:12px">{% raw %}
 ;@author      wvhn
 ;@label Deutsch (mein Slang)
 
@@ -250,7 +250,7 @@ extends = "de"
 kg = "%01,0f kg"
 {% endraw %}
 </textarea>
-Hierbei wird bei Eingabe von 'kg' der Wert in kg als Ganzzahl angezeigt.
+Bei diesem Beispielformat wird bei Eingabe von 'kg' der Wert in kg als Ganzzahl angezeigt.
 <br><br><br>
 Weiterführende Infos zu dem Widget gibt es in der Inline Dokumentation.
 

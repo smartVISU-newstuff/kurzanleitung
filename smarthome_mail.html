@@ -2,7 +2,7 @@
 * -----------------------------------------------------------------------------
 * @package     smartVISU
 * @author      Martin Gleiß
-* @copyright   2012
+* @copyright   2012 - 2022
 * @license     GPL [http://www.gnu.de]
 * -----------------------------------------------------------------------------
 */
@@ -14,8 +14,8 @@
 {% endblock %}
 
 {% block docu %}
-Das Mail-Plugin ist insofern recht nützlich, da man die verschiedensten Informationen (Alarm-, Statusmeldungen etc.) je nach Bedarf versenden kann.
-Hier nun 2 Beispiel für die Verwendung des Mail-Plugins.<br>
+Das Mail-Plugin ist recht nützlich, da man die verschiedensten Informationen (Alarm-, Statusmeldungen etc.) je nach Bedarf versenden kann.
+Hier 2 Beispiele für die Verwendung des Mail-Plugins.<br>
 Im ersten Beispiel lassen wir uns täglich den Tagesstromverbrauch und die damit verbundenen Kosten schicken (s.Verbrauchsdatenermittlung). Im zweiten Beispiel soll eine Aktion ausgelöst werden, sofern eine Mail mit einem ganz bestimmten Betreff eingeht.
 Los gehts.<br><br>
 
@@ -27,7 +27,7 @@ Wie wir mittlerweile wissen, erfolgt die Eibindung von Plugins in der
 	</div>
 <br>
 Laut Doku von SmartHomeNG schreiben wir z.B. für einen gmail.com-Account folgendes in die plugin.yaml
-<textarea cols="50" rows="3">
+<textarea cols="50" rows="3" style="font-family:'Courier New'; font-size:12px">
 mail:
     plugin_name: mailsend
     host: smtp.googlemail.com
@@ -41,7 +41,7 @@ Die Daten für den Mailaccount sind natürlich entsprechend anzupassen.<br>
 Als Werte lassen wir uns nun täglich um 23:59 Uhr die Werte aus dem Beispiel der Energieverbrauchsermittlung zusenden.<br>
 Hiezu brauchen wir jetzt 2 Dinge. Erstens ein Item, was den Mailversand täglich zur gleichen Zeit auslöst und zweitens eine Logik, in der die Ausgabe der Mail definiert ist.
 Das Erste erreichen wir einfach mit crontab. 
-<textarea cols="50" rows="3">
+<textarea cols="50" rows="3" style="font-family:'Courier New'; font-size:12px">
 energieverbrauchsmail:
     senden:
         type: bool
@@ -76,7 +76,7 @@ Als letztes müssen wir nur noch die Logik mit dem Item zur Auslösung der Mail 
 		</code>
 	</div>
 folgenden Eintrag hinzufügen.
-<textarea cols="50" rows="3">
+<textarea cols="50" rows="3" style="font-family:'Courier New'; font-size:12px">
 Mail_Stromverbrauch:
     filename: verbrauchsmail.py
     watch_item: energieverbrauchsmail.senden
@@ -90,7 +90,7 @@ Der Inhalt der empfangenen Mail sieht hierbei dann beispielsweise wie folgt aus:
 In diesem Beispiel wollen wir beim Eingang einer Mail mit einem ganz bestimmten Betreff (Betreff = TagesEnergieverbrauchszahlen) die obige Logik auslösen, welche uns dann die aktuellen Verbrauchsdaten aus dem obigen Beispiel zurück mailt.
 Hier ist auch als erstes die Pluginfunktion einzubinden.
 Laut Doku von SmartHomeNG schreiben wir z.B. für einen gmail.com-Account folgendes in die plugin.yaml
-<textarea cols="50" rows="3">
+<textarea cols="50" rows="3" style="font-family:'Courier New'; font-size:12px">
 imap:
     plugin_name: mailrcv
     host: imap.gmail.com
@@ -101,7 +101,7 @@ imap:
     #cycle: 300
 </textarea>
 Die Daten für den Mailaccount sind natürlich entsprechend anzupassen.<br>
-Hinweis: Wer eine anderes Abfrageintervall beim Imap-Server benötig als den Standart, kann das # vor cycle entfernen und einen eigenen Wert vorgeben (Wert in Sekunden).<br><br>
+Hinweis: Wer eine anderes Abfrageintervall beim IMAP-Server benötig als den Standard, kann das # vor cycle entfernen und einen eigenen Wert vorgeben (Wert in Sekunden).<br><br>
 Nun brauchen wir wieder eine Logik, die dafür sorgt, dass beim Eingang der entsprechenden Mail unser oben genanntes Item "<b>energieverbrauchsmail.senden</b>" die Logik zum Mailversand triggert.
 Hierzu erstellen wir eine neue Datei mit dem Namen inmail.py in
 	<div class="linux">
@@ -111,12 +111,12 @@ Hierzu erstellen wir eine neue Datei mit dem Namen inmail.py in
 		</code>
 	</div>
 Der Inhalt dieser inmail.py sieht beispielsweise wie folgt aus
-<textarea cols="50" rows="3">
+<textarea cols="50" rows="3" style="font-family:'Courier New'; font-size:12px">
 sh.energieverbrauchsmail.senden(True)
 </textarea>
 <br>
 Als letztes müssen wir nur noch die logic.yaml um folgenden Eintrag erweitern
-<textarea cols="50" rows="3">
+<textarea cols="50" rows="3" style="font-family:'Courier New'; font-size:12px">
 inmail:
     filename: inmail.py
     mail_suject: TagesEnergieverbrauchszahlen

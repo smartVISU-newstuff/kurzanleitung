@@ -2,7 +2,7 @@
 * -----------------------------------------------------------------------------
 * @package     smartVISU
 * @author      Martin Gleiß
-* @copyright   2012
+* @copyright   2012 - 2022
 * @license     GPL [http://www.gnu.de]
 * -----------------------------------------------------------------------------
 */
@@ -36,7 +36,7 @@ Anbei ein Beispiel um einen Schalter in einem Block-Typ 2 anzuzeigen:<br>
 
 <br clear="all">
 Das Beispiel-Item sieht so aus:<br>
-<textarea cols="50" rows="3">
+<textarea cols="50" rows="3" style="font-family:'Courier New'; font-size:12px">
 %YAML 1.1
 ---
 
@@ -74,24 +74,24 @@ Das Widget für die Steckdose TV sieht wie folgt aus:<br>
 	</div>
 <br>
 Der dazugehörige html-Code in Block-Typ 2 sieht so aus:<br>
-<textarea cols="50" rows="3">{% raw %}
-   <div class="block">
-      <div class="set-2" data-role="collapsible-set" data-theme="c" data-content-theme="a" data-mini="true">
-         <div data-role="collapsible" data-collapsed="false">
-            <h3>Wohnzimmer</h3>
-            <table width=100%>
-               <tr>
-                 <td align=left>
-                   {{ basic.stateswitch('', 'Wohnzimmer.Stehlampe', 'icon', [1,0], ['light_floor_lamp.svg', 'light_floor_lamp.svg']) }} Stehlampe
-                 </td>
-                 <td align=left>
-                   {{ basic.stateswitch('', 'Wohnzimmer.Stehlampe', 'icon', [1,0], ['message_socket.svg', 'message_socket.svg']) }} Stedo TV
-                 </td>
-               </tr>
-            </table> 
-          </div>
-       </div>
-    </div>
+<textarea cols="50" rows="3" style="font-family:'Courier New'; font-size:12px">{% raw %}
+  <div class="block">
+     <div class="set-2" data-role="collapsible-set" data-theme="c" data-content-theme="a" data-mini="true">
+        <div data-role="collapsible" data-collapsed="false">
+           <h3>Wohnzimmer</h3>
+           <table width=100%>
+              <tr>
+                <td align=left>
+                  {{ basic.stateswitch('', 'Wohnzimmer.Stehlampe', 'icon', [1,0], ['light_floor_lamp.svg', 'light_floor_lamp.svg']) }} Stehlampe
+                </td>
+                <td align=left>
+                  {{ basic.stateswitch('', 'Wohnzimmer.Stehlampe', 'icon', [1,0], ['message_socket.svg', 'message_socket.svg']) }} Stedo TV
+                </td>
+              </tr>
+           </table> 
+        </div>
+     </div>
+  </div>
 {% endraw %}
 </textarea>
 Weiterführende Infos zu dem Widget gibt es in der Inline Dokumentation.

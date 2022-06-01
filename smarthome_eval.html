@@ -98,7 +98,7 @@
 	Lösungsweg: <br>
 	Wir haben einmal ein Item für das Freigabeobjekt der Bewegungsmelder (FreigabeBM.Eingang) und ein Item für die Außen-Lichtstärke (Aussen.Lichtstaerke).<br>
 	Ein möglicher Lösungsweg könnte so aussehen:<br>
-	<textarea cols="50" rows="3">
+	<textarea cols="50" rows="3" style="font-family:'Courier New'; font-size:12px">
 Aussen:
     Lichtstaerke:
         type: num
@@ -127,7 +127,7 @@ FreigabeBM:
 	Somit ist es natürlich auch möglich, entgegen unserem oben genannten Ziel/Vorgabe, Freigabeobjekte, die bei einer 0 die Freigabe geben, mit diesem eval Attribut zu realisieren.<br>
 	Hier müssten wir also nur die Bedingung ändern. Also wenn der Lux-Wert größer 750 ist, sende 1. Ansonsten (Wert kleiner 750) sende 0.<br>
 	Im konkreten Fall würde der eval und eval_trigger Zweig so aussehen:
-	<textarea cols="50" rows="3">
+	<textarea cols="50" rows="3" style="font-family:'Courier New'; font-size:12px">
 FreigabeBM:
     Eingang:
         type: bool

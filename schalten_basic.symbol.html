@@ -2,7 +2,7 @@
 * -----------------------------------------------------------------------------
 * @package     smartVISU
 * @author      Martin Gleiß
-* @copyright   2012
+* @copyright   2012 - 2022
 * @license     GPL [http://www.gnu.de]
 * -----------------------------------------------------------------------------
 */
@@ -23,14 +23,13 @@ Anbei ein Beispiel um Statusmeldungen in einem Block-Typ 2 anzuzeigen:<br>
          <table width=100%>
            <tr>
              <td align=left>
-               {{ basic.symbol('', 'Wohnzimmer.FensterSued', 'Fenster Süd ist auf', 'fts_window_1w_open.svg', 1) }}
-               {{ basic.symbol('', 'Wohnzimmer.FensterSued', 'Fenster Süd ist zu', 'fts_window_1w.svg', 0) }}
+               {{ basic.symbol('', 'Wohnzimmer.FensterSued', ['Fenster Süd ist zu', 'Fenster Süd ist auf'], ['fts_window_1w.svg', 'fts_window_1w_open.svg'], [0,1]) }}
+
              </td>
            </tr>
            <tr>
              <td align=left>
-               {{ basic.symbol('', 'Wohnzimmer.FensterWest', 'Fenster West ist auf', 'fts_window_1w_open.svg', 1) }}
-               {{ basic.symbol('', 'Wohnzimmer.FensterWest', 'Fenster West ist zu', 'fts_window_1w.svg', 0) }}
+               {{ basic.symbol('', 'Wohnzimmer.FensterWest', ['Fenster West ist zu', 'Fenster West ist auf'], ['fts_window_1w.svg', 'fts_window_1w_open.svg'], [0,1]) }}
              </td>
            </tr>
            <tr>
@@ -70,7 +69,7 @@ Anbei ein Beispiel um Statusmeldungen in einem Block-Typ 2 anzuzeigen:<br>
 </div>
 
 Das Beispiel-Item sieht so aus:<br>
-<textarea cols="50" rows="3">
+<textarea cols="50" rows="3" style="font-family:'Courier New'; font-size:12px">
 %YAML 1.1
 ---
 
@@ -101,25 +100,23 @@ Wohnzimmer:
         knx_cache: 6/6/6
 </textarea>
 <br>
-Die Widgets für den Status Fenster Süd sehen wie folgt aus:<br>
+Es wird empfohlen, die Parameter als Arrays anzugeben, weil dann nur ein Widget-Aufruf benötigt wird. Das Widget für den Status Fenster Süd sieht dann wie folgt aus:<br>
 	<div class="linux">
 		<code class="prettyprint">{% filter trim|escape|nl2br %}{% verbatim %}
-		   {{ basic.symbol('', 'Wohnzimmer.FensterSued', 'Fenster Süd ist auf', 'fts_window_1w_open.svg', 1) }}
-		   {{ basic.symbol('', 'Wohnzimmer.FensterSued', 'Fenster Süd ist zu', 'fts_window_1w.svg', 0) }}
+		   {{ basic.symbol('', 'Wohnzimmer.FensterSued', ['Fenster Süd ist zu', 'Fenster Süd ist auf'], ['fts_window_1w.svg', 'fts_window_1w_open.svg'], [0,1]) }}
 			{% endverbatim %}{% endfilter %}
 		</code>
 	</div>
 <br>
-Die Widgets für den Status Fenster West sehen wie folgt aus:<br>
+Das Widget für den Status Fenster West ist ensprechend:<br>
 	<div class="linux">
 		<code class="prettyprint">{% filter trim|escape|nl2br %}{% verbatim %}
-		   {{ basic.symbol('', 'Wohnzimmer.FensterWest', 'Fenster West ist auf', 'fts_window_1w_open.svg', 1) }}
-		   {{ basic.symbol('', 'Wohnzimmer.FensterWest', 'Fenster West ist zu', 'fts_window_1w.svg', 0) }}
+		   {{ basic.symbol('', 'Wohnzimmer.FensterWest', ['Fenster West ist zu', 'Fenster West ist auf'], ['fts_window_1w.svg', 'fts_window_1w_open.svg'], [0,1]) }}
 			{% endverbatim %}{% endfilter %}
 		</code>
 	</div>
 <br>
-Die Widgest für den Status Terrassentür sehen wie folgt aus:<br>
+Alternativ (aus Laufzeitgründen nicht empfohlen) kann man für jeden item-Wert ein einzelnes Widget angeben. Dies sieht für den Status Terrassentür wie folgt aus:<br>
 	<div class="linux">
 		<code class="prettyprint">{% filter trim|escape|nl2br %}{% verbatim %}
 		   {{ basic.symbol('', 'Wohnzimmer.TerrasseTuer', 'Terrassentür ist auf', 'fts_door_open.svg', 1) }}
@@ -129,39 +126,37 @@ Die Widgest für den Status Terrassentür sehen wie folgt aus:<br>
 	</div>
 <br>
 Der dazugehörige html-Code in Block-Typ 2 sieht so aus:<br>
-<textarea cols="50" rows="3">{% raw %}
-   <div class="block">
-   <div class="set-2" data-role="collapsible-set" data-theme="c" data-content-theme="a" data-mini="true">
-      <div data-role="collapsible" data-collapsed="false">
-          <h3>Status Fenster / Türen</h3>
-             <table width=100%>
-               <tr>
+<textarea cols="50" rows="3" style="font-family:'Courier New'; font-size:12px">{% raw %}
+  <div class="block">
+     <div class="set-2" data-role="collapsible-set" data-theme="c" data-content-theme="a" data-mini="true">
+        <div data-role="collapsible" data-collapsed="false">
+           <h3>Status Fenster / Türen</h3>
+           <table width=100%>
+              <tr>
                  <td align=left>
-                   {{ basic.symbol('', 'Wohnzimmer.FensterSued', 'Fenster Süd ist auf', 'fts_window_1w_open.svg', 1) }}
-                   {{ basic.symbol('', 'Wohnzimmer.FensterSued', 'Fenster Süd ist zu', 'fts_window_1w.svg', 0) }}
+                    {{ basic.symbol('', 'Wohnzimmer.FensterSued', ['Fenster Süd ist zu', 'Fenster Süd ist auf'], ['fts_window_1w.svg', 'fts_window_1w_open.svg'], [0,1]) }}
                  </td>
-               </tr>
-               <tr>
+              </tr>
+              <tr>
                  <td align=left>
-                   {{ basic.symbol('', 'Wohnzimmer.FensterWest', 'Fenster West ist auf', 'fts_window_1w_open.svg', 1) }}
-                   {{ basic.symbol('', 'Wohnzimmer.FensterWest', 'Fenster West ist zu', 'fts_window_1w.svg', 0) }}
+                    {{ basic.symbol('', 'Wohnzimmer.FensterWest', ['Fenster West ist zu', 'Fenster West ist auf'], ['fts_window_1w.svg', 'fts_window_1w_open.svg'], [0,1]) }}
                  </td>
-               </tr>
-               <tr>
+              </tr>
+              <tr>
                  <td align=left>
-                   {{ basic.symbol('', 'Wohnzimmer.TerrasseTuer', 'Terrassentür ist auf', 'fts_door_open.svg', 1) }}
-                   {{ basic.symbol('', 'Wohnzimmer.TerrasseTuer', 'Terrassentür ist zu', 'fts_door.svg', 0) }}
+                    {{ basic.symbol('', 'Wohnzimmer.TerrasseTuer', 'Terrassentür ist auf', 'fts_door_open.svg', 1) }}
+                    {{ basic.symbol('', 'Wohnzimmer.TerrasseTuer', 'Terrassentür ist zu', 'fts_door.svg', 0) }}
                  </td>
-               </tr>
-             </table> 
-      </div>
-    </div>
-    </div>
+              </tr>
+           </table> 
+        </div>
+     </div>
+  </div>
 {% endraw %}
 </textarea>
 <br><br>
 Anmerkung:<br>
-Wenn jemand sagt: "Mich interessiert nicht zu sehen, wenn das Fenster geschlossen ist, sondern nur, wenn es offen ist.", kann man den Widget-Code für z.B. Status 0 weglassen.<br>
+Wenn jemand sagt: "Mich interessiert nicht zu sehen, wenn das Fenster geschlossen ist, sondern nur, wenn es offen ist.", kann man den Widget-Code bzw. die Array-Werte für z.B. Status 0 weglassen.<br>
 Dann erscheint in der Visu nur eine Symbolmeldung, wenn das Fenster geöffnet ist.
 <br><br>
 Weiterführende Infos zu dem Widget gibt es in der Inline Dokumentation.

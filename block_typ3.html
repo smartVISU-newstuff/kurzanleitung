@@ -2,7 +2,7 @@
 * -----------------------------------------------------------------------------
 * @package     smartVISU
 * @author      Martin Gleiß
-* @copyright   2012
+* @copyright   2012 - 2022
 * @license     GPL [http://www.gnu.de]
 * -----------------------------------------------------------------------------
 */
@@ -31,27 +31,23 @@
 <br clear="all">
 
 <br><br>
-Hier nun der html-Codes für die Typ 3
+Hier nun der html-Codes für den Typ 3
 <br>{% raw %}
-<textarea cols="50" rows="3">
-	<div class="block">
-		<div class="set-2" data-role="collapsible-set" data-theme="c" data-content-theme="a" data-mini="true">
-			<div data-role="collapsible" data-collapsed="false">
-				<h3>Typ 3</h3>
-				{ { Widget-Code } }
-			</div>
-			<div data-role="collapsible">
-				<h3>Titel 1</h3>
-				{ { Widget-Code } }
-			</div>
-		</div>
-	</div>
+<textarea cols="50" rows="3" style="font-family:'Courier New'; font-size:12px">
+  <div class="block">
+     <div class="set-2" data-role="collapsible-set" data-theme="c" data-content-theme="a" data-mini="true">
+        <div data-role="collapsible" data-collapsed="false">
+           <h3>Typ 3</h3>
+           {{ Widget-Code }}
+        </div>
+        <div data-role="collapsible">
+           <h3>Titel 1</h3>
+           {{ Widget-Code }}
+        </div>
+     </div>
+   </div>
 {% endraw %}
 </textarea>
-
-
-
-
 {% endblock %}
 
 
