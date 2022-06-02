@@ -119,8 +119,8 @@ SB:
         knx_dpt: 16
         knx_send: 6/0/5
 </textarea>
-<br><br>
-Die Widgets, welche wir verwenden, sehen so aus:<br>
+<br>
+Folgende Widgets werden verwendet:<br>
 	<div class="linux">
 		<code class="prettyprint">{% filter trim|escape|nl2br %}{% verbatim %}
 			{{ basic.print('', 'SB.PlayerName') }}		
@@ -131,8 +131,7 @@ Die Widgets, welche wir verwenden, sehen so aus:<br>
 			{% endverbatim %}{% endfilter %}
 		</code>
 	</div>
-
-<br><br>
+<br>
 Der dazugehörige html-Code in Block-Typ 2 sieht so aus:<br>
 <textarea cols="50" rows="3" style="font-family:'Courier New'; font-size:12px">{% raw %}
   <div class="block">
@@ -196,8 +195,7 @@ Der dazugehörige html-Code in Block-Typ 2 sieht so aus:<br>
 {% endraw %}
 </textarea>
 <br>
-<br><br><br>
-
+basic.print kann auch zur Ausführung kleiner JavaScript Skripte und zur Ausgabe von html-Code verwendet werden. <br>
 Weiterführende Infos zu dem Widget gibt es in der Inline Dokumentation.
 
 {% endblock %}
