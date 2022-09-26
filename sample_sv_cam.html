@@ -32,7 +32,6 @@ Hieru brauchen wir lediglich den Pafd zur Bilddatei.<br>
 
 	<div class="linux">
 		<code class="prettyprint">{% filter trim|escape|nl2br %}{% verbatim %}
-			{% import "multimedia.html" as multimedia %}
 			{{ multimedia.image('image1', 'http://www.wuerzburg.de/downloads/webcam/cam1.jpg', 'corner') }}
 			{% endverbatim %}{% endfilter %}
 		</code>

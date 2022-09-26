@@ -9,7 +9,7 @@
 
 
 {% extends "grundlagen.html" %}
-{% import "forms.html" as forms %}
+{% import config_version_full >= "3.2.c" ? "@widgets/forms.html" : "forms.html" as forms %}
 
 {% block headline %}
 	<img class="icon" src='{{ icon0 }}edit_settings.svg' />Grundlagen - Config-Seite

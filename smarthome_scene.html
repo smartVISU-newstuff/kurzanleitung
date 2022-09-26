@@ -104,8 +104,8 @@ Da wir hier innerhalb des Items auch eine GA verwenden, ist es somit auch mögli
 Je nachdem welchen Wert (hier von 0-4) man nun auf das Item bzw. die GA sendet, werden die entsprechenden Szenen aufgerufen. <br>
 <textarea cols="50" rows="3" style="font-family:'Courier New'; font-size:12px">{% raw %}
 	<div class="preblock">
+		Szenen<br />
 		<span data-role="controlgroup" data-type="horizontal"> 
-			Szenen<br />
 			{{ basic.stateswitch('', 'Wohnzimmer.Szenen', 'midi', 0, 'scene_party.svg') }}
 			{{ basic.stateswitch('', 'Wohnzimmer.Szenen', 'midi', 1, 'scene_dinner.svg') }}
 			{{ basic.stateswitch('', 'Wohnzimmer.Szenen', 'midi', 2, 'scene_livingroom.svg') }}

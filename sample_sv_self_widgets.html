@@ -19,7 +19,6 @@
     <div class="set-2" data-role="collapsible-set" data-theme="c" data-content-theme="a" data-mini="true">
     	<div data-role="collapsible" data-collapsed="false">
             <h3>Rollosteuerung</h3>
-				{% import "widget_my_rollo.html" as widget_my_rollo %}
 				{{ widget_my_rollo.rollobedienung('Rollo1', 'Wohnen Süd', 'Rollo.Wohnen.Sued.fahren', 'Rollo.Wohnen.Sued.stop', 'Rollo.Wohnen.Sued.position') }}
 				{{ widget_my_rollo.rollobedienung('Rollo2', 'Wohnen Nord', 'Rollo.Wohnen.Nord.fahren', 'Rollo.Wohnen.Nord.stop', 'Rollo.Wohnen.Nord.position') }}
 				{{ widget_my_rollo.rollobedienung('Rollo3', 'Wohnen beide', 'Rollo.Wohnen.beide.fahren', 'Rollo.Wohnen.beide.stop', '') }}			
@@ -45,7 +44,8 @@ Wir brauchen zum einen: <br>
 	<li>ein Feld für den Positions-Status</li>
 </ul>
 
-Als erstes legen wir in unsere "widget_my_rollo.html" nun die notwendigen Parameter fest. Weiterhin legen wir hier fest, mit welchen "Komando" das Widget aufgerufen werden soll (rollobedienung)<br>
+Als erstes legen wir in unsere "widget_my_rollo.html" die notwendigen Parameter fest. Weiterhin legen wir den Namen fest, mit dem das Widget aufgerufen werden soll ("rollobedienung")<br>
+Zuletzt müssen alle innerhalb eines Widgets verwendeten Widgets explizit importiert werden. Da sich ab smartVISU v3.2.c die Importmethode ändert, machen wir das gleich versionsabhängig.<br> 
 	<div class="block" style="width:100%">
 	<div class="set-2" data-role="collapsible-set" data-theme="c" data-content-theme="a" data-mini="true">
           <div data-role="collapsible" data-collapsed="false">
@@ -65,7 +65,7 @@ Als erstes legen wir in unsere "widget_my_rollo.html" nun die notwendigen Parame
 					*<br />
 					*/<br />
 					{% macro rollobedienung(id, txt, gad_move, gad_stop, gad_position) %}<br />
-					{% import "basic.html" as basic %}<br />
+					{% import config_version_full >= "3.2.c" ? "@widgets/basic.html" : "basic.html" as basic %}
 					{% set uid = uid(page, id) %}<br />
 					<br />
 
@@ -152,7 +152,7 @@ Letztendlich sieht der komplette Widget-Code wie folgt aus:<br>
 					*<br />
 					*/<br />
 					{% macro rollobedienung(id, txt, gad_move, gad_stop, gad_position) %}<br />
-					{% import "basic.html" as basic %}<br />
+					{% import config_version_full >= "3.2.c" ? "@widgets/basic.html" : "basic.html" as basic %}<br />
 					{% set uid = uid(page, id) %}<br />
 					<br />				
 					/** Design */<br />
@@ -195,8 +195,9 @@ Letztendlich sieht der komplette Widget-Code wie folgt aus:<br>
 	
 <br /><br />
 Kommen wir zur Einbindung unseres Widgets in unsere html-Seite.<br />	
-Hier müssen wir in unserer html-Seite den Code in dem sich unser Widget befindet "bekanntgeben" und weiterhin sagen wie wir diesen aufrufen.<br>
-Dies geschieht einmal z.B. mit:<br>
+Wenn wir das Widget in einen der dafür vorgesehenen Ordner ./dropins/widgets oder ./pages/&lt;eigene Seiten &gt;/widgets ablegen, importiert smartVISU dieses automatisch. Widgets, die mit smarthomeNG-Plugins ausgeliefert werden, werden 
+bei automatischer Seitenerstellung in den von smarthomeNG verwalteten Ordner ./dropis/shwidgets kopiert und von dort ebenfalls automatisch eingelesen. <br>
+Nur wenn man andere Ordner verwendet, z.B. den Ordner der eigenen Seiten, muss man sich selbst um den Import kümmern:<br>
 		<div class="linux">
 		<code class="prettyprint">{% filter trim|escape|nl2br %}{% verbatim %}
 			{% import "widget_my_rollo.html" as widget_my_rollo %}
@@ -204,7 +205,7 @@ Dies geschieht einmal z.B. mit:<br>
 		</code>
 	</div>
 	<br>
-und weiterhin mit unserem erstellten Macroaufruf "rollobedienung" inkl. der Items die wir verwenden wollen.<br>
+In der Seite wird dann der Aufruf des Widgets mit unserem erstellten Macro "rollobedienung" inkl. der verwendeten Items platziert:<br>
 		<div class="linux">
 		<code class="prettyprint">{% filter trim|escape|nl2br %}{% verbatim %}
 			{{ widget_my_rollo.rollobedienung('Rollo1', 'Wohnen Süd', 'Rollo.Wohnen.Sued.fahren', 'Rollo.Wohnen.Sued.stop', 'Rollo.Wohnen.Sued.position') }}
@@ -220,7 +221,7 @@ Zusammenfassend sieht das obige Beispiel somit wie folgt aus:<br>
     <div class="set-2" data-role="collapsible-set" data-theme="c" data-content-theme="a" data-mini="true">
     	<div data-role="collapsible" data-collapsed="false">
             <h3>Rollosteuerung</h3>
-				{% import "widget_my_rollo.html" as widget_my_rollo %}
+				{% import "widget_my_rollo.html" as widget_my_rollo %} /** ggfls. weglassen ! */
 				{{ widget_my_rollo.rollobedienung('Rollo1', 'Wohnen Süd', 'Rollo.Wohnen.Sued.fahren', 'Rollo.Wohnen.Sued.stop', 'Rollo.Wohnen.Sued.position') }}
 				{{ widget_my_rollo.rollobedienung('Rollo2', 'Wohnen Nord', 'Rollo.Wohnen.Nord.fahren', 'Rollo.Wohnen.Nord.stop', 'Rollo.Wohnen.Nord.position') }}
 				{{ widget_my_rollo.rollobedienung('Rollo3', 'Wohnen beide', 'Rollo.Wohnen.beide.fahren', 'Rollo.Wohnen.beide.stop', '') }}			

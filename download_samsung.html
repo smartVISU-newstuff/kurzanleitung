@@ -14,7 +14,7 @@ Auf Wunsch .... die Icons für die Senderlogos und Steuerung aus der Beschreibun
     <div class="set-2" data-role="collapsible-set" data-theme="c" data-content-theme="a" data-mini="true">
 	<div data-role="collapsible" data-collapsed="false">
 			<center><p>Senderauswahl</p></center>
-		{% import "multimedia.html" as multimedia %}
+
 	<table width="100%">
 		<tr>
 		<td align="middle" width="70%">
@@ -106,7 +106,6 @@ Auf Wunsch .... die Icons für die Senderlogos und Steuerung aus der Beschreibun
     <div class="set-2" data-role="collapsible-set" data-theme="c" data-content-theme="a" data-mini="true">
 	<div data-role="collapsible" data-collapsed="false">
             <h3>Steuerung I</h3>
-{% import "multimedia.html" as multimedia %}
 	<table width="100%">
                 {{ multimedia.station('ST1', 'tv.Source', 'pics/station/steuerung/source.png', 1, 'midi') }}
                 {{ multimedia.station('ST2', 'tv.Up', 'pics/station/steuerung/pfeil_hoch.png', 1, 'midi') }}
@@ -131,7 +130,7 @@ Auf Wunsch .... die Icons für die Senderlogos und Steuerung aus der Beschreibun
     <div class="set-2" data-role="collapsible-set" data-theme="c" data-content-theme="a" data-mini="true">
 	<div data-role="collapsible" data-collapsed="false">
             <h3>Steuerung II</h3>
-{% import "multimedia.html" as multimedia %}
+
 	<table width="100%">
                 {{ multimedia.station('ST10', 'tv.VolDown', 'pics/station/steuerung/volume_down.png', 1, 'midi') }}
                 {{ multimedia.station('ST11', 'tv.mute', 'pics/station/steuerung/mute.png', 1, 'midi') }}

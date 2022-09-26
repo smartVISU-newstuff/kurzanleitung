@@ -25,6 +25,8 @@
   io.write('pc.buero.shutdown.uzsu', Betriebsart);
 
 </script>
+{% import config_version_full >= "3.2.c" ? "@widgets/widget_verriegelung.html" : "widget_verriegelung.html" as locker %}
+
 	Hier nun ein Besipiel um einen Windows-PC über KNX hoch- und runterfahren zu lassen (getestet mit XP, Vista, Win7).<br><br>
 	Ziel / Vorgabe:<br>
 	Ein Windows-PC mit der IP-Adresse 192.168.1.172 und der MAC-Adresse 01:02:03:04:05:06 soll über die VISU, Tastsensor und zeitliche Vorgabe 
@@ -271,7 +273,6 @@ pc:
            <table width=100%>
                 <tr>
                     <td align=midle>				
-					{% import "widget_verriegelung.html" as locker %}
 					Freigabe<br />
 					{{ basic.flip('flip', 'PC.FreigabeDummy', 'Ein', 'Aus') }}
 				<br /><br />
@@ -294,7 +295,6 @@ Der dazugehörige Wiget-Code für einen Block 2 sieht so aus:
            <table width=100%>
                 <tr>
                     <td align=midle>				
-					{% import "widget_verriegelung.html" as locher %}
 					Freigabe<br />
 					{{ basic.flip('flip1', 'pc.buero.freigabe', 'Ein', 'Aus') }}
 				<br /><br />
@@ -352,7 +352,7 @@ Wenn wir dies haben, können wir unseren Block2 um die basic.symbol-Einträge er
            <table width=100%>
                 <tr>
                     <td align=midle>
-					{{ basic.symbol('online', 'PC.onoff', 'online', icon1~'../../icons/gn/it_nas.png') }}
+					{{ basic.symbol('online', 'PC.onoff', 'online', 'icons/gn/it_nas.png') }}
 					{{ basic.symbol('offline', 'PC.onoff', 'offline', icon0~'it_nas.svg', 0) }}
                     </td>
                 </tr>				
@@ -360,7 +360,6 @@ Wenn wir dies haben, können wir unseren Block2 um die basic.symbol-Einträge er
            <table width=100%>
                 <tr>
                     <td align=midle>				
-					{% import "widget_verriegelung.html" as locker %}
 					Freigabe<br />
 					{{ basic.flip('flip1', 'PC.FreigabeDummy', 'Ein', 'Aus') }}
 				<br /><br />
@@ -383,7 +382,7 @@ Der dazugehörige Wiget-Code für einen Block 2 sieht nun so aus:
            <table width=100%>
                 <tr>
                     <td align=midle>
-					{{ basic.symbol('online', 'pc.buero.ping', 'online', icon1~'../../icons/gn/it_nas.png') }}
+					{{ basic.symbol('online', 'pc.buero.ping', 'online', 'icons/gn/it_nas.png') }}
 					{{ basic.symbol('offline', 'pc.buero.ping', 'offline', icon0~'it_nas.png', 0) }}
                     </td>
                 </tr>				
@@ -391,7 +390,6 @@ Der dazugehörige Wiget-Code für einen Block 2 sieht nun so aus:
            <table width=100%>
                 <tr>
                     <td align=midle>				
-					{% import "widget_verriegelung.html" as locker %}
 					Freigabe<br />
 					{{ basic.flip('flip1', 'pc.buero.freigabe', 'Ein', 'Aus') }}
 				<br /><br />
@@ -418,15 +416,14 @@ Abschließend noch 2 Beispiele für weitere Anwendungsmöglichkeiten.<br>
                     <td align=midle>
 					{{ basic.stateswitch('Monitor1', 'PC.Monitor', '', '', ['it_television.svg', 'it_television.svg']) }}
 					{{ basic.stateswitch('Drucker1', 'PC.Drucker', '', '', ['it_fax.svg', 'it_fax.svg']) }}					
-					{{ basic.symbol('pingon', 'PC.onoff', 'online', icon1~'../../icons/gn/it_nas.png') }}
+					{{ basic.symbol('pingon', 'PC.onoff', 'online', 'icons/gn/it_nas.png') }}
 					{{ basic.symbol('pingoff', 'PC.onoff', 'offline', icon0~'it_nas.svg', 0) }}
                     </td>
                 </tr>				
             </table>
            <table width=100%>
                 <tr>
-                    <td align=midle>				
-					{% import "widget_verriegelung.html" as locker %}
+                    <td align=midle>
 					Freigabe<br />
 					{{ basic.flip('flip11', 'PC.FreigabeDummy', 'Ein', 'Aus') }}
 				<br /><br />
@@ -455,7 +452,6 @@ Abschließend noch 2 Beispiele für weitere Anwendungsmöglichkeiten.<br>
            <table width=100%>
                 <tr>
                     <td align=midle>				
-					{% import "widget_verriegelung.html" as locker %}
 					Freigabe<br />
 					{{ basic.flip('flip11', 'PC.FreigabeDummy', 'Ein', 'Aus') }}
 				<br /><br />

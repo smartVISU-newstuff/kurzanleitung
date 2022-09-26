@@ -39,7 +39,6 @@
             <table width=100%>
                 <tr>
                     <td align=center">
-						{% import "icon.html" as icon %}
 						{{ icon.windrose('', '', 'Wetter.Windrichtung', '0', '360') }} <br> --------------------------- <br>
 						Wind aus: <span style="color:#FE9A2E">{{ basic.print('', 'Wetter.WindrichtungNWOS') }}</span> mit: <span style="color:#FE9A2E">{{ basic.print('', 'Wetter.Windgeschwindigkeit.Web', 'km/h') }}</span><br> --------------------------- <br>
                     </td>
@@ -321,7 +320,6 @@ Wetter:
             <table width=100%>
                 <tr>
                     <td align=center">
-						{% import "icon.html" as icon %}
 						{{ icon.windrose('web2', '', 'Wetter.Windrichtung', '0', '360') }} <br> --------------------------- <br>
 						Wind aus: <span style="color:#FE9A2E">{{ basic.print('', 'Wetter.WindrichtungNWOS') }}</span> mit: <span style="color:#FE9A2E">{{ basic.print('web4', 'Wetter.Windgeschwindigkeit.wind_kmh', 'km/h') }}</span><br> --------------------------- <br>
                     </td>
