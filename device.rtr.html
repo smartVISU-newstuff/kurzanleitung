@@ -8,7 +8,7 @@
 <script type="text/javascript">
 	$( document ).ready(function() {
 			 io.write('Wohnzimmer.Heizung.temperatur', '20' );
-			 io.write('Wohnzimmer.Heizung.set', '22' );
+			 io.write('Wohnzimmer.Heizung.sollwert', '22' );
 		});
 </script>
 
@@ -16,7 +16,7 @@
         <div class="set-2" data-role="collapsible-set" data-theme="c" data-content-theme="a" data-mini="true">
             <div data-role="collapsible" data-collapsed="false">
                 <h3>Heizung</h3>
-                {{ device.rtr('', 'Heizung', 'Wohnzimmer.Heizung.temperatur', 'Wohnzimmer.Heizung.set', 'Wohnzimmer.Heizung.mode', 'Wohnzimmer.Heizung.mode', 'Wohnzimmer.Heizung.mode', 'Wohnzimmer.Heizung.state', '') }}
+                {{ device.rtr('', 'Heizung', 'Wohnzimmer.Heizung.temperatur', 'Wohnzimmer.Heizung.sollwert', 'Wohnzimmer.Heizung.mode', 'Wohnzimmer.Heizung.mode', 'Wohnzimmer.Heizung.mode', 'Wohnzimmer.Heizung.state', '') }}
             </div>
         </div>
     </div>
@@ -33,7 +33,7 @@ Wohnzimmer:
             knx_listen: 6/1/0
             knx_init: 6/1/0
 
-        set:
+        sollwert:
             type: num
             visu_acl: rw
             database: yes
@@ -61,7 +61,7 @@ Wohnzimmer:
 Das Widget für die Heizung sieht wie folgt aus:<br>
     <div class="linux">
         <code class="prettyprint">{% filter trim|escape|nl2br %}{% verbatim %}
-        {{ device.rtr('', 'Heizung', 'Wohnzimmer.Heizung.temperatur', 'Wohnzimmer.Heizung.set', 'Wohnzimmer.Heizung.mode', 'Wohnzimmer.Heizung.mode', 'Wohnzimmer.Heizung.mode', 'Wohnzimmer.Heizung.state', '') }}
+        {{ device.rtr('', 'Heizung', 'Wohnzimmer.Heizung.temperatur', 'Wohnzimmer.Heizung.sollwert', 'Wohnzimmer.Heizung.mode', 'Wohnzimmer.Heizung.mode', 'Wohnzimmer.Heizung.mode', 'Wohnzimmer.Heizung.state', '') }}
         {% endverbatim %}{% endfilter %}
         </code>
     </div>
@@ -72,7 +72,7 @@ Der dazugehörige html-Code in Block-Typ 2 sieht so aus:<br>
         <div class="set-2" data-role="collapsible-set" data-theme="c" data-content-theme="a" data-mini="true">
             <div data-role="collapsible" data-collapsed="false">
                 <h3>Heizung</h3>
-                {{ device.rtr('', 'Heizung', 'Wohnzimmer.Heizung.temperatur', 'Wohnzimmer.Heizung.set', 'Wohnzimmer.Heizung.mode', 'Wohnzimmer.Heizung.mode', 'Wohnzimmer.Heizung.mode', 'Wohnzimmer.Heizung.state', '') }}
+                {{ device.rtr('', 'Heizung', 'Wohnzimmer.Heizung.temperatur', 'Wohnzimmer.Heizung.sollwert', 'Wohnzimmer.Heizung.mode', 'Wohnzimmer.Heizung.mode', 'Wohnzimmer.Heizung.mode', 'Wohnzimmer.Heizung.state', '') }}
             </div>
         </div>
     </div>
@@ -87,7 +87,7 @@ Eine weitere Möglichkeit der Betriebsartumschaltung ist die, dass man separate 
 In diesem Fall muß das Item entsprechend angepasst werden und ein möglicher Widget-Code könnte so aussehen.<br>
     <div class="linux">
         <code class="prettyprint">{% filter trim|escape|nl2br %}{% verbatim %}
-        {{ device.rtr('', 'Heizung', 'Wohnzimmer.Heizung.temperatur', 'Wohnzimmer.Heizung.set', 'Wohnzimmer.Heizung.mode', 'Wohnzimmer.Heizung.nacht', 'Wohnzimmer.Heizung.frost', 'Wohnzimmer.Heizung.state', '') }}
+        {{ device.rtr('', 'Heizung', 'Wohnzimmer.Heizung.temperatur', 'Wohnzimmer.Heizung.sollwert', 'Wohnzimmer.Heizung.mode', 'Wohnzimmer.Heizung.nacht', 'Wohnzimmer.Heizung.frost', 'Wohnzimmer.Heizung.state', '') }}
         {% endverbatim %}{% endfilter %}
         </code>
     </div>
