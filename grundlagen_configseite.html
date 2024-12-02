@@ -16,6 +16,15 @@
 {% endblock %}
 
 {% block docu %}
+	<style>
+		.ui-field-contain > label {
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			font-weight: normal;
+		}
+	</style>
+	
 	Über den letzten Button (Zahnräder) im horizontalen Menu von smartVISU gelangt man ins Systemmenü. Der erste Menüpunkt dort führt zur Config-Seite.
 	Diese Seite stellt zentral alle Einstellungsmöglichkeiten zur Verfügung.<br><br>
 	Das Menü verfügt über 3 Reiter: 'Global', 'Seite' und 'Gerät'. Die Einstelloptionen sind immer gleich, werden aber unterschiedlich abgespeichert:<br>
@@ -96,12 +105,11 @@
 	<li><i>Host/IP </i> =  Verbindung zum Backend (empfohlen = IP des Raspberry Pi)  </li>
 	<li><i>Port</i> = Port zur Verbindung mit Backend (empfohlen = Standard Port von SmartHomeNG = 2424)</li>
 	<li><i>TLS-Port</i> = Port zur verschlüsselten Verbindung mit Backend (empfohlen = Standard TLS-Port von SmartHomeNG = 2425)</li>
-	<li><i>Realtime</i> = Echtzeit (empfohlen = on)</li>
 	<li><i>Reconnect</i> = Verbindungen zum Backend automatisch wiederherstellen, z.B. wenn Browser Tab im Hintergrund war (empfohlen = on)</li>
-	<li><i>Reverse Proxy</i> = Löscht IP-Adresse und Port, wenn der Server als Reverse Proxy betrieben wird.</li>
 </ul>
-Der in v3.2 eingeführte neue Treiber für smarthomeNG ("smarthomenNG new") verbessert die Erkennung der bestehenden Verbindung und benötigt deshalb die Option "Reverse Proxy" nicht mehr. Wird die Visu allerdings nicht über die IP-Adresse aufgerufen, 
-sondern über einen Hostnamen, dann muss dieser Hostname zwingend im Abschnitt "smartVISU Hostname / Proxy Server" eingegeben werden!
+Der in v3.2 eingeführte neue Treiber für smarthomeNG verbessert die Erkennung der bestehenden Verbindung, in dem er zwischen numerischer IP-Adresse und textförmiger URL unterscheidet. Wird die Visu allerdings nicht über die IP-Adresse aufgerufen, 
+sondern über einen Hostnamen, dann muss dieser Hostname zwingend im Abschnitt "smartVISU Hostname / Proxy Server" eingegeben werden! Anderenfalls interpretiert der Treiber dies als Verbindung von außen und verwendet die http(s)-Ports 80 und 443 
+anstelle der eingestellten Ports für den Websocket.
 <div id="config_tab_{{ source }}_2">
 	<form class="configform">
 		<fieldset>
@@ -215,7 +223,10 @@ Den benannten Kalendern können Farben zugewiesen werden. Diese sind ebenfalls d
 <h2>Optionen:</h2>
 Hier werden zusätzliche Optionen ausgwählt:
 <ul>
-	<li><i>Updateprüfung:</i> wenn dies aktiviert ist, sucht smartVISU regelmäßig nach Updates und meldet dies im Mitteilungsbereich oben rechts (empfohlen = on).
+	<li><i>Updateprüfung:</i> wenn dies aktiviert ist, sucht smartVISU regelmäßig nach Updates und meldet dies im Mitteilungsbereich oben rechts (empfohlen = on).</li>
+	<li><i>Menüs zurücksetzen:</i> einklappbare Sektionen im Raummenü werden beim Seitenwechsel auf den Anfangszustand zurückgesetzt, wenn dies eingeschaltet ist.</li>
+	<li><i>Item Bestätigung:</i> bei aktivierter Option wird die Visu erst nach Rückmeldung vom Backend aktualisiert. Anderenfalls erfolgt die Aktualisierung innerhalb der Visu.</li>
+	<li><i>Aktivitätsanzeige:</i> wenn diese Option eigeschaltet ist, blinkt das "VISU"-Logo nach dem Seitenwechsel bis alle angeforderten items empfangen wurden.</li>
 </ul>
 <div id="config_tab_{{ source }}_3">
 	<form class="configform">
@@ -225,9 +236,12 @@ Hier werden zusätzliche Optionen ausgwählt:
 					<div class="ui-bar-c ui-corner-top ui-collapsible-caption">
 						<h3 class="ui-collapsible-heading">{{ lang('configuration_page', 'options', 'label') }}</h3>
 					</div>
-					<div data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="a" >
-						<h3>{{ lang('configuration_page', 'updatecheck', 'label') }}</h3>
+					<div data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="a">
+						<h3>{{ lang('configuration_page', 'functions', 'label') }}</h3>
 						{{ forms.config_flip(source, values, 'updatecheck') }}
+						{{ forms.config_flip(source, values, 'collapsible_reset') }}
+						{{ forms.config_flip(source, values, 'driver_loopback') }}
+						{{ forms.config_flip(source, values, 'driver_signalBusy') }}	
 					</div>
 				</div>
 			</div>
